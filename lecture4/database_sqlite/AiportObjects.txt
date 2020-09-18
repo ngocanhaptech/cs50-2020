@@ -1,0 +1,8 @@
+jfk = Airport(code="JFK", city="New York")
+jfk.save()
+lhr = Airport(code="LHR", city="London")
+lhr.save()
+cdg = Airport(code="CDG", city="Paris")
+cdg.save()
+nrt = Airport(code="NRT", city="Tokyo")
+nrt.save()
