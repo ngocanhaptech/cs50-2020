@@ -43,8 +43,7 @@ class Post(models.Model):
         ordering = ('-publish',)
     
     def get_absolute_url(self):
-        return reverse('blog:post_detail',
-            [self.slug])
+        return reverse('blog:post_detail', args=[self.slug])
     
     def __str__(self):
         return self.title

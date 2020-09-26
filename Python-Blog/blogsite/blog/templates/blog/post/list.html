@@ -6,7 +6,18 @@
     Blog list
     <ul>
         {% for post in posts %}
-        <li><a href="{% url 'blog:post_detail' post.slug %}">{{ post.title }}</a></li>
+        <li>
+            <div>
+            <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+            <p class="date">
+                Published {{ post.publish }} by {{ post.author }}
+            </p>
+            <div class="post-content">
+                {{ post.body |safe|truncatewords:30|linebreaks|striptags }}
+            </div>                
+            </div>
+        </li>
         {% endfor %}
     </ul>
+    {% include "blog/pagination.html" with page=posts %}
 {% endblock %}

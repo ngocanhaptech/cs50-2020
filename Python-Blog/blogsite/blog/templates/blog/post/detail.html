@@ -5,6 +5,9 @@
 
 {% block content %}
     <h1>{{ post.title }}</h1>
-    <p>{{ post.body | safe }}</p>
+    <p class="date">
+        Published {{ post.publish }} by {{ post.author }}
+    </p>
+    {{ post.body|safe|linebreaks }}
     <a href="{% url 'blog:post_list' %}">Back to list</a>
 {% endblock %}
