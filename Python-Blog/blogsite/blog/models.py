@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
-from django.utils.text import  slugify
+# from django.utils.text import  slugify
+from blogsite.utils import unique_slugify
 from django.contrib.auth.models import User
 from django.urls import reverse
 from ckeditor.fields import RichTextField
@@ -15,7 +16,7 @@ class Post(models.Model):
         ('published', 'Published'),
     )
     title = models.CharField(max_length=250)
-    slug = models.SlugField(max_length=250, unique_for_date='publish')
+    slug = models.SlugField(max_length=250, unique_for_date='publish', blank=True)
     author = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
@@ -35,7 +36,7 @@ class Post(models.Model):
     published = PublishedManager() # Our custom manager.
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.title)
+        unique_slugify(self, self.title, slug_field_name='slug', queryset=None, slug_separator='-')
         super(Post, self).save(*args, **kwargs)
     
     class Meta:
