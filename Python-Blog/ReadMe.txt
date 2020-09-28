@@ -19,6 +19,8 @@
 ** FINAL - Go to project folder to working **
 - django-admin startproject blogsite 
 - cd blogsite
+- pip install django-ckeditor
+- pip install -U selenium
 - python manage.py migrate
 - python manage.py runserver
 ** or user orther host setting **
