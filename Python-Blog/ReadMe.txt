@@ -37,3 +37,9 @@ admin.site.register(Post)
 - python manage.py createsuperuser
 ** admin/admin **
 
+** Redis connection
+>>> import redis
+>>> r= redis.Redis(host='**.**.**.**', port=6379, password='***', db=1)
+>>> r.set('foo','bar')
+>>> r.get('foo')
+>>> r.lastsave()
