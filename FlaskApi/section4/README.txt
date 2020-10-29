@@ -7,3 +7,6 @@ virtualenv venv --python=python3.8
 # Install Flask-RESTful
 pip install Flask-RESTful
 
+# Run cmd project from code
+cd code
+
